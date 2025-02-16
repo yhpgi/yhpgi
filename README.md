@@ -12,7 +12,7 @@
 
 ###
 
-<img align="right" height="150" src="https://avatars.githubusercontent.com/u/53725693?v=4"  />
+<!--  <img align="right" height="150" src="https://avatars.githubusercontent.com/u/53725693?v=4"  /> -->
 
 ###
 
