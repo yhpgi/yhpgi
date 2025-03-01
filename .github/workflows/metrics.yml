@@ -1,0 +1,39 @@
+# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
+name: Metrics
+on:
+  schedule: [{cron: "*/30 * * * *"}]
+  workflow_dispatch:
+  push: {branches: ["main"]}
+jobs:
+  github-readme-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          curl "https://github-readme-stats-hui5.vercel.app/api?username=yhpgi&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&theme=dark&bg_color=0d1117" > general.svg
+          curl "https://github-readme-stats-hui5.vercel.app/api/top-langs/?username=yhpgi&show_icons=true&hide_border=true&theme=dark&bg_color=0d1117&size_weight=0.2&count_weight=0.8&langs_count=10&layout=compact" > languages.svg
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: ./*.svg
+          message: Update github-readme-stats
+          default_author: github_actions
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@v3.17
+        with:
+          # Your GitHub token
+          token: ${{ secrets.GH_TOKEN }}
+
+          # Options
+          user: yhpgi
+          template: classic
+          base: ""
+          config_timezone: Asia/Jakarta
+          plugin_activity: yes
+          plugin_activity_days: 14
+          plugin_activity_filter: issue, pr, review, wiki, star, release, member, comment
+          plugin_activity_limit: 5
+          plugin_activity_load: 300
+          plugin_activity_visibility: public
+          plugin_activity_ignored: github-actions[bot], dependabot[bot], dependabot-preview[bot], allcontributors[bot]
