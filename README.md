@@ -11,4 +11,4 @@
   </table>
 </p>
 
-![Metrics](https://raw.githubusercontent.com/yhpgi/yhpgi/main/github-metrics.svg)
+<!--- ![Metrics](https://raw.githubusercontent.com/yhpgi/yhpgi/main/github-metrics.svg) --->
